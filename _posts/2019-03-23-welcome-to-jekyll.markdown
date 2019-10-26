@@ -1,28 +1,14 @@
 ---
 layout: post
-title:  "Integrating razorpay into your webapp"
-date:   2019-03-23 21:03:36 +0530
-categories: Javascript NodeJS
+title: "Reed Solomon"
+date: 2019-10-26T10:20:00Z
+categories: ["Erasure Coding", "Storage System"]
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+Reed-Solomon codes are a group of error-correcting codes. Now what are error correcting codes and what is their purpose?
+Lot of computer systems deal with data and they need to deal with some kind of failures like:
+1. **Data Corruption**
+2. **Data Loss** 
 
-```javascript
-const Razorpay = require('razorpay');
+Lets say you have a data set D and you partition it into n sub-parts {D1...Dn} and you want to generate k extra part {C1...Ck} such that even if k parts are lost from {D1...Dn,C1...Ck} all Data part can be retrived. {C1...Ck} are called code block that is extra information we need to store to handle atmost k failures.
 
-let rzp = Razorpay({
-	key_id: 'KEY_ID',
-	secret: 'name'
-});
-
-// capture request
-rzp.capture(payment_id, cost)
-	.then(function (data) {
-		return 2;
-	})
-```
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+For example if you have a file of size 10MB and you want to divide it into 2 parts X,Y each of size 5MB, you can generate 2 code blocks X+Y and X-Y. If we lose any 2 blocks out of {X,Y,X+Y,X-Y} we can reconstruct original dataset. That is in essense what erasure codes are for.
