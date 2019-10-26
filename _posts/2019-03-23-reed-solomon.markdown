@@ -78,7 +78,7 @@ $$
 
 You can read more about galois field at [galois][galois].
 
-####Cauchy Reed-Solomon
+#### Cauchy Reed-Solomon
 
 This is generally preferred reed solomon method. A cuuchy matrix is defined as \\(a_{ij} = 1 / (x_i + y_j)\\). Each \\(x_i\\) and \\(y_j\\) are different from each other. All n x n submatrix of cauchy matrix is invertible.
 
